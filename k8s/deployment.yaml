@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: things
+  name: things
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: things
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: things
+    spec:
+      containers:
+      - image: docker.io/k8s-training-app/things
+        name: things
+        resources: {}
+status: {}

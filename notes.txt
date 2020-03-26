@@ -1,0 +1,43 @@
+Git Stuff
+$ ssh-keygen -t rsa -b 4096 -C "ogorostis@rocketlawyer.com"
+
+=================
+$ skaffold init
+  FATA[0000] one or more valid builder configuration (Dockerfile or Jib configuration) must be present to build images with skaffold;
+  please provide at least one build config and try again or run `skaffold init --skip-build`
+
+$ kubectl create deployment things --image=docker.io/k8s-training-app/things --dry-run -oyaml > k8s/deployment.yaml
+
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    creationTimestamp: null
+    labels:
+      app: things
+    name: things
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: things
+    strategy: {}
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: things
+      spec:
+        containers:
+        - image: docker.io/k8s-training-app/things
+          name: things
+          resources: {}
+  status: {}
+
+
+Init again:
+$ skaffold init
+FATA[0000] one or more valid builder configuration (Dockerfile or Jib configuration) must be present to build images with skaffold;
+please provide at least one build config and try again or run `skaffold init --skip-build`
+
+
+$ skaffold init --XXenableJibInit
